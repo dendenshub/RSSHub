@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: rsshub
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      # Required for Render to bind correctly
+      - key: PORT
+        value: 10000
+      # Production mode
+      - key: NODE_ENV
+        value: production
+      # Memory caching (default)
+      - key: CACHE_TYPE
+        value: memory
+      # Optional: Instagram cookie for private/protected feeds
+      - key: INSTAGRAM_COOKIE
+        value: sessionid=2890202863%3Az6USlAhgsT2oQp%3A25%3AAYgC-seMyUly7WiUQZOMNtSDdCZ5mEOvoIxklRLwdw
