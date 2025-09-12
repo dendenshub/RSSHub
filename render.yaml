@@ -1,8 +1,18 @@
 services:
-  - type: worker
-    name: discord-bot
-    env: python
+  - type: web
+    name: rsshub
+    env: node
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: python main.py
-    autoDeploy: true
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: INSTAGRAM_COOKIE
+        sync: false
+      - key: PUPPETEER_EXECUTABLE_PATH
+        value: /usr/bin/google-chrome
+      - key: CHROMIUM_BIN
+        value: /usr/bin/google-chrome
+    buildpacks:
+      - https://github.com/render-buildpacks/puppeteer-chromium
