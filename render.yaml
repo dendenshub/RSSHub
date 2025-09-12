@@ -1,18 +1,18 @@
 services:
   - type: web
-    name: rsshub
+    name: rsshub-sc05
     env: node
     plan: free
-    buildCommand: npm install && npm run build
+    buildCommand: |
+      npm install
+      npm install puppeteer
+      npx puppeteer browsers install chrome
     startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
-      - key: INSTAGRAM_COOKIE
-        sync: false
+      # Puppeteer fix for TikTok
       - key: PUPPETEER_EXECUTABLE_PATH
-        value: /usr/bin/google-chrome
-      - key: CHROMIUM_BIN
-        value: /usr/bin/google-chrome
-    buildpacks:
-      - https://github.com/render-buildpacks/puppeteer-chromium
+        value: /opt/render/project/.cache/puppeteer/chrome/linux-136/chrome-linux64/chrome
+      - key: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
+        value: "true"
