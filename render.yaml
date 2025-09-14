@@ -22,7 +22,15 @@ services:
       - key: NITTER_INSTANCES
         value: '["https://nitter.poast.org","https://nitter.salastil.com"]'
 
-      # Instagram cookie (needed for IG feeds)
-      # ⚠ Replace YOUR_COOKIE_HERE with your real cookie string
-      - key: INSTAGRAM_COOKIE
-        value: sessionid=2890202863%3Az6USlAhgsT2oQp%3A25%3AAYjqhZjcd3BzWFBkHHeiA5H2T_whbVG01bn-4wGtEg; csrftoken=HZNTAnI5spOGeKItyLMpBrfdaeWA5FXn; ds_user_id=2890202863; mid=aFktIwALAAHsK00cPyxBXZcnp70O; rur=CCO,2890202863,1789354352:01fe40d9efa389111c57a2cb457429ce1da2721b7375c44bccd3618b1ebd7fb003f8548c
+      # Instagram cookies (needed for IG feeds)
+      - key: IG_COOKIE_SESSIONID
+        value: 2890202863%3Az6USlAhgsT2oQp%3A25%3AAYjqhZjcd3BzWFBkHHeiA5H2T_whbVG01bn-4wGtEg
+      - key: IG_COOKIE_CSRFTOKEN
+        value: HZNTAnI5spOGeKItyLMpBrfdaeWA5FXn
+      - key: IG_COOKIE_DS_USER_ID
+        value: 2890202863
+      - key: IG_COOKIE_MID
+        value: aFktIwALAAHsK00cPyxBXZcnp70O
+      - key: IG_COOKIE_RUR
+        value: CCO,2890202863,1789354352:01fe40d9efa389111c57a2cb457429ce1da2721b7375c44bccd3618b1ebd7fb003f8548c
+
