@@ -20,7 +20,8 @@ services:
 
       # Nitter instances (for Twitter feeds)
       - key: NITTER_INSTANCES
-        value: '["https://nitter.poast.org","https://nitter.salastil.com"]'
+        value: '["https://nitter.poast.org","https://nitter.net","https://nitter.42l.fr","https://nitter.kavin.rocks"]'
+
 
       # Instagram cookies (needed for IG feeds)
       - key: IG_COOKIE_SESSIONID
