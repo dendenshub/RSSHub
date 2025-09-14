@@ -6,31 +6,23 @@ services:
     buildCommand: |
       npm install
       npm install puppeteer
-      npx puppeteer browsers install chrome
+      # Install Chromium (safer than Chrome on Render)
+      npx puppeteer browsers install chromium
     startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
 
-      # Puppeteer fix for TikTok
+      # Puppeteer fix for TikTok (point to Chromium)
       - key: PUPPETEER_EXECUTABLE_PATH
-        value: /opt/render/project/.cache/puppeteer/chrome/linux-136/chrome-linux64/chrome
+        value: /opt/render/project/.cache/puppeteer/chromium/linux-136/chrome-linux64/chrome
       - key: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
         value: "true"
 
-      # Nitter instances (for Twitter feeds)
-      - key: NITTER_INSTANCES
-        value: '["https://nitter.poast.org","https://nitter.net","https://nitter.42l.fr","https://nitter.kavin.rocks"]'
+      # Nitter (use multiple instances, comma separated)
+      - key: NITTER_INSTANCE
+        value: https://nitter.poast.org,https://nitter.net,https://nitter.42l.fr,https://nitter.kavin.rocks
 
-
-      # Instagram cookies (needed for IG feeds)
-      - key: IG_COOKIE_SESSIONID
-        value: 2890202863%3Az6USlAhgsT2oQp%3A25%3AAYjqhZjcd3BzWFBkHHeiA5H2T_whbVG01bn-4wGtEg
-      - key: IG_COOKIE_CSRFTOKEN
-        value: HZNTAnI5spOGeKItyLMpBrfdaeWA5FXn
-      - key: IG_COOKIE_DS_USER_ID
-        value: 2890202863
-      - key: IG_COOKIE_MID
-        value: aFktIwALAAHsK00cPyxBXZcnp70O
-      - key: IG_COOKIE_RUR
-        value: CCO,2890202863,1789354352:01fe40d9efa389111c57a2cb457429ce1da2721b7375c44bccd3618b1ebd7fb003f8548c
+      # Instagram (use full cookie string)
+      - key: INSTAGRAM_COOKIE
+        value: 'sessionid=2890202863%3Az6USlAhgsT2oQp%3A25%3AAYjqhZjcd3BzWFBkHHeiA5H2T_whbVG01bn-4wGtEg; csrftoken=HZNTAnI5spOGeKItyLMpBrfdaeWA5FXn; ds_user_id=2890202863; mid=aFktIwALAAHsK00cPyxBXZcnp70O; rur=CCO,2890202863,1789354352:01fe40d9efa389111c57a2cb457429ce1da2721b7375c44bccd3618b1ebd7fb003f8548c'
