@@ -11,8 +11,18 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+
       # Puppeteer fix for TikTok
       - key: PUPPETEER_EXECUTABLE_PATH
         value: /opt/render/project/.cache/puppeteer/chrome/linux-136/chrome-linux64/chrome
       - key: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
         value: "true"
+
+      # Nitter instances (for Twitter feeds)
+      - key: NITTER_INSTANCES
+        value: '["https://nitter.poast.org","https://nitter.salastil.com"]'
+
+      # Instagram cookie (needed for IG feeds)
+      # ⚠ Replace YOUR_COOKIE_HERE with your real cookie string
+      - key: INSTAGRAM_COOKIE
+        value: "YOUR_COOKIE_HERE"
